@@ -1,14 +1,19 @@
-create table reserve(
- res_num number,
- mem_num number,
- res_date varchar2(10) not null,
- res_time varchar2(8) not null,
- res_count varchar2(8) not null
- room_num varchar2(30) not null,
- reg_date date default sysdate not null,
- modify_date date,
- constraint reserve_pk primary key(res_num),
- constraint zmember_detail_fk foreign key(mem_num) references zmember (room_num)
+CREATE TABLE "ROOM" (
+	"ROOM_NUM"	NUMBER		NOT NULL,
+	"ROOM_SIZE"	NUMBER(2)		NOT NULL,
+	"ROOM_DETAIL"	VARCHAR2(150)		NOT NULL,
+	"ROOM_NAME"	VARCHAR2(30)		NOT NULL,
+	CONSTRAINT ROOM_PK PRIMARY KEY (ROOM_NUM)
 );
 
-create sequence reserve_seq;
+CREATE TABLE "RESERVE" (
+	"RES_NUM"	NUMBER		NOT NULL,
+	"MEM_NUM"	NUMBER		NOT NULL,
+	"RES_DATE"	VARCHAR2(10)		NOT NULL,
+	"RES_TIME"	VARCHAR2(8)		NOT NULL,
+	"RES_COUNT"	NUMBER(2)		NOT NULL,
+	"ROOM_NUM"	NUMBER		NOT NULL,
+	CONSTRAINT RESERVE_PK PRIMARY KEY (RES_NUM),
+	CONSTRAINT RESERVE_FK1 FOREIGN KEY (MEM_NUM) REFERENCES MEMBER_DETAIL (MEM_NUM),
+	CONSTRAINT RESERVE_FK2 FOREIGN KEY (ROOM_NUM) REFERENCES ROOM (ROOM_NUM)
+);
