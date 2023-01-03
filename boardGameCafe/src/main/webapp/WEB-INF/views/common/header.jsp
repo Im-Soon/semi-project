@@ -11,7 +11,30 @@
 		<li>
 			<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
 		</li>
-		
+		<li>
+			<a href="${pageContext.request.contextPath}/reserve/reserve.do">예약</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/notice/noticeList.do">공지</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/inquiry/inquiryList.do">문의</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/order/order.do">주문페이지</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/cart/cart.do">장바구니</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/game/gameList.do">게임소개</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/game/gameDetail.do">게임 상세페이지</a>
+		</li>
 		<c:if test="${!empty user_num && user_auth == 2}">
 			<li><a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a></li>
 		</c:if>

@@ -1,17 +1,17 @@
 package kr.util;
 
 public class PagingUtil {
-	private int startRow;	 // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ì‹œì‘ ë²ˆí˜¸
-	private int endRow;	 // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ë ë²ˆí˜¸
-	private StringBuffer page;// í˜ì´ì§€ í‘œì‹œ ë¬¸ìì—´
+	private int startRow;	 // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ½ÃÀÛ ¹øÈ£
+	private int endRow;	 // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ³¡ ¹øÈ£
+	private StringBuffer page;// ÆäÀÌÁö Ç¥½Ã ¹®ÀÚ¿­
 
 	/**
-	 * currentPage : í˜„ì¬í˜ì´ì§€
-	 * count : ì „ì²´ ê²Œì‹œë¬¼ ìˆ˜
-	 * rowCount : í•œ í˜ì´ì§€ì˜  ê²Œì‹œë¬¼ì˜ ìˆ˜
-	 * pageCount : í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
-	 * pageUrl : í˜¸ì¶œ í˜ì´ì§€ url
-	 * addKey : ë¶€ê°€ì ì¸ key ì—†ì„ ë•ŒëŠ” null ì²˜ë¦¬ (&num=23í˜•ì‹ìœ¼ë¡œ ì „ë‹¬í•  ê²ƒ)
+	 * currentPage : ÇöÀçÆäÀÌÁö
+	 * count : ÀüÃ¼ °Ô½Ã¹° ¼ö
+	 * rowCount : ÇÑ ÆäÀÌÁöÀÇ  °Ô½Ã¹°ÀÇ ¼ö
+	 * pageCount : ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
+	 * pageUrl : È£Ãâ ÆäÀÌÁö url
+	 * addKey : ºÎ°¡ÀûÀÎ key ¾øÀ» ¶§´Â null Ã³¸® (&num=23Çü½ÄÀ¸·Î Àü´ŞÇÒ °Í)
 	 * */
 	public PagingUtil(int currentPage, int count, int rowCount,
 			int pageCount, String pageUrl) {
@@ -32,33 +32,33 @@ public class PagingUtil {
 		if(keyword != null) sub_url = "&keyfield="+keyfield+"&keyword="+keyword;
 		if(addKey != null) sub_url += addKey;
 		
-		// ì „ì²´ í˜ì´ì§€ ìˆ˜
+		// ÀüÃ¼ ÆäÀÌÁö ¼ö
 		int totalPage = (int) Math.ceil((double) count / rowCount);
 		if (totalPage == 0) {
 			totalPage = 1;
 		}
-		// í˜„ì¬ í˜ì´ì§€ê°€ ì „ì²´ í˜ì´ì§€ ìˆ˜ë³´ë‹¤ í¬ë©´ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¡œ ì„¤ì •
+		// ÇöÀç ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
 		if (currentPage > totalPage) {
 			currentPage = totalPage;
 		}
-		// í˜„ì¬ í˜ì´ì§€ì˜ ì²˜ìŒê³¼ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°.
+		// ÇöÀç ÆäÀÌÁöÀÇ Ã³À½°ú ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ °¡Á®¿À±â.
 		startRow = (currentPage - 1) * rowCount + 1;
 		endRow = currentPage * rowCount;
-		// ì‹œì‘ í˜ì´ì§€ì™€ ë§ˆì§€ë§‰ í˜ì´ì§€ ê°’ êµ¬í•˜ê¸°.
+		// ½ÃÀÛ ÆäÀÌÁö¿Í ¸¶Áö¸· ÆäÀÌÁö °ª ±¸ÇÏ±â.
 		int startPage = (int) ((currentPage - 1) / pageCount) * pageCount + 1;
 		int endPage = startPage + pageCount - 1;
-		// ë§ˆì§€ë§‰ í˜ì´ì§€ê°€ ì „ì²´ í˜ì´ì§€ ìˆ˜ë³´ë‹¤ í¬ë©´ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¡œ ì„¤ì •
+		// ¸¶Áö¸· ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
 		if (endPage > totalPage) {
 			endPage = totalPage;
 		}
-		// ì´ì „ block í˜ì´ì§€
+		// ÀÌÀü block ÆäÀÌÁö
 		page = new StringBuffer();
 		if (currentPage > pageCount) {
 			page.append("<a href="+pageUrl+"?pageNum="+ (startPage - 1) + sub_url +">");
-			page.append("[ì´ì „]");
+			page.append("[ÀÌÀü]");
 			page.append("</a>");
 		}
-		//í˜ì´ì§€ ë²ˆí˜¸.í˜„ì¬ í˜ì´ì§€ëŠ” ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ê°•ì¡°í•˜ê³  ë§í¬ë¥¼ ì œê±°.
+		//ÆäÀÌÁö ¹øÈ£.ÇöÀç ÆäÀÌÁö´Â »¡°£»öÀ¸·Î °­Á¶ÇÏ°í ¸µÅ©¸¦ Á¦°Å.
 		for (int i = startPage; i <= endPage; i++) {
 			if (i > totalPage) {
 				break;
@@ -76,10 +76,10 @@ public class PagingUtil {
 			}
 			page.append("&nbsp;");
 		}
-		// ë‹¤ìŒ block í˜ì´ì§€
+		// ´ÙÀ½ block ÆäÀÌÁö
 		if (totalPage - startPage >= pageCount) {
 			page.append("<a href="+pageUrl+"?pageNum="+ (endPage + 1) + sub_url +">");
-			page.append("[ë‹¤ìŒ]");
+			page.append("[´ÙÀ½]");
 			page.append("</a>");
 		}
 	}
