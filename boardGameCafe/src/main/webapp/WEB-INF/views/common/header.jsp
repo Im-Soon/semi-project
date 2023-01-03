@@ -35,6 +35,9 @@
 		<li>
 			<a href="${pageContext.request.contextPath}/game/gameDetail.do">게임 상세페이지</a>
 		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/member/mymyPage.do">마이페이지-관리자</a>
+		</li>
 		<c:if test="${!empty user_num && user_auth == 2}">
 			<li><a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a></li>
 		</c:if>
