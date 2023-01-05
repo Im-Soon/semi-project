@@ -29,14 +29,14 @@ public class CartDAO {
 				//커넥션 풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();			
 				//SQL문 작성
-				sql = "INSERT INTO zcart (cart_num,item_num,"
-					+ "order_quantity,mem_num) VALUES ("
-					+ "zcart_seq.nextval,?,?,?)";
+				sql = "INSERT INTO cart (cart_num,pro_num,"
+					+ "Cart_count,mem_num) VALUES ("
+					+ "cart_seq.nextval,?,?,?)";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
-				pstmt.setInt(1, cart.getItem_num());
-				pstmt.setInt(2, cart.getOrder_quantity());
+				pstmt.setInt(1, cart.getPro_num());
+				pstmt.setInt(2, cart.getCart_count());
 				pstmt.setInt(3, cart.getMem_num());
 				//SQL문 실행
 				pstmt.executeUpdate();			
@@ -75,8 +75,8 @@ public class CartDAO {
 				while(rs.next()) {
 					CartVO cart = new CartVO();
 					cart.setCart_num(rs.getInt("cart_num"));
-					cart.setItem_num(rs.getInt("item_num"));
-					cart.setOrder_quantity(rs.getInt("order_quantity"));
+					cart.setPro_num(rs.getInt("pro_num"));
+					cart.setCart_count(rs.getInt("cart_count"));
 					cart.setMem_num(rs.getInt("mem_num"));
 					
 					/*

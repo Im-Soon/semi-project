@@ -36,19 +36,19 @@
 		<div class="product-detail">
 			<form id="product_cart" method="post">	
 				<input type="hidden" name="pro_num" 
-						value="${product.product_num}" id="pro_num">
+						value="${product.pro_num}" id="pro_num">
 				<input type="hidden" name="pro_price" 
 						value="${product.price}" id="pro_price">
-				<input type="hidden" name="pro_quantity" 
-						value="${product.quantity}" id="pro_quantity">
+				<input type="hidden" name="cart_count" 
+						value="${product.quantity}" id="cart_count">
 				<ul>
 					<li>가격 : <b><fmt:formatNumber value="${product.price}"/></b></li>
 					<li>수량 : <b><fmt:formatNumber value="${product.quantity}"/></b></li>
 					<c:if test="${product.quantity > 0}">
 					<li>
-						<label for="order_quatity">구매수량</label>
-						<input type="number" name="order_quantity" min="1" 
-							max="${product.quantity}" id="order_quantity" class="quantity-width">
+						<label for="cart_count">구매수량</label>
+						<input type="number" name="cart_count" min="1" 
+							max="${product.quantity}" id="cart_count" class="quantity-width">
 					</li>
 					<li>
 						<input type="checkbox" class="cart_checkbox" checked="checked">
@@ -118,8 +118,8 @@
 						value="${product.pro_num}" id="pro_num">
 				<input type="hidden" name="pro_price" 
 						value="${product.price}" id="pro_price">
-				<input type="hidden" name="pro_quantity" 
-						value="${product.quantity}" id="pro_quantity">
+				<input type="hidden" name="cart_count" 
+						value="${product.quantity}" id="cart_count">
 				<ul>
 					<c:if test="${product.quantity > 0}">
 					<li>
