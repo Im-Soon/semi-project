@@ -1,1 +1,143 @@
 @charset "UTF-8";
+ 
+@font-face {
+      src: url("../fonts/DungGeunMo.ttf");
+      font-family: "DungGeunMo";
+}
+
+/* 전체 레이아웃 */
+*{
+	font-family: "DungGeunMo";
+}
+
+body{
+	width: 1000px;
+	margin: 0 auto;
+	background: #9673cd;
+}
+
+a:link{
+	text-decoration: none;
+	color: #000000;
+}
+
+a:visited{
+	text-decoration: none;
+	color: #000000;
+}
+
+a:hover{
+	text-decoration: none;
+	color: #6C6C6C;
+}
+
+/* 페이지 레이아웃 */
+.page-main{
+	background: #FFFFFF;
+	margin: 40px 0;
+	box-shadow: 10px 10px rgba(73, 73, 73, 1.0);
+	min-height: 650px;
+}
+
+.content-main{
+	padding: 10px 20px;
+}
+
+/* 공통 정렬 */
+.align-center{
+	text-align: center;
+}
+
+.align-right{
+	text-align: right;
+}
+
+/* 공통 등록, 수정 폼 */
+form{
+	width: 600px;
+	margin: 0 auto;
+	border: 1px solid #000;
+	padding: 10px 10px 10px 30px;
+}
+
+form ul li{
+	clear: both;
+}
+
+form ul li label{
+	width: 130px;
+	float: left; /*태그를 왼쪽으로 정렬*/
+}
+
+ul{
+	list-style: none;
+}
+
+input{
+	margin-top: 4px;
+}
+
+input[type="text"],input[type="password"],input[type="email"]{
+	width: 310px;
+}
+
+#register_form input[id="id"]{
+	width: 223px;
+}
+
+input[id="zipcode"]{
+	width: 205px;
+}
+
+input[type="number"]{
+	width: 100px;
+}
+
+.form-notice{
+	margin-left: 130px;
+}
+
+/* 공통 목록 */
+form#search_form{
+	border: none;
+}
+
+ul.search{
+	width: 340px;
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+}
+
+ul.search li{
+	margin: 0 0 9px 0;
+	padding: 0;
+	display: inline;
+}
+
+.list-space{
+	margin-bottom: 10px;
+}
+
+table{
+	width: 100%;
+	border: 1px solid #000;
+	border-collapse: collapse;
+	margin-top: 5px;
+}
+
+table td,table th{
+	border: 1px solid #000;
+	padding: 5px;
+}
+
+/* 공통 메시지 */
+.result-display{
+	width: 400px;
+	height: 200px;
+	margin: 50px auto;
+	border: 1px solid #000;
+	display: flex;/*하위 요소를 수직으로 쌓을 수 있는 공간을 만듬*/
+	align-items: center;/*세로 정렬*/
+	justify-content: center;/*가로 정렬*/	
+}
