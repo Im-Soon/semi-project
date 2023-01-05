@@ -9,7 +9,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	window.onload=function(){ //window.onload 메소드를 안쓸거면 div태그 밑에 넣어야됨
-		let num=1;
+		let num=1; 
 		let gallery = document.getElementById('gallery');
 		//이벤트 연결
 		//이전 버튼을 눌렀을 때

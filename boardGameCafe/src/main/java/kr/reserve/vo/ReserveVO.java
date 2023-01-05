@@ -1,7 +1,7 @@
 package kr.reserve.vo;
 
 import java.sql.Date;
-
+ 
 public class ReserveVO {
 	private int res_num;
 	private int mem_num;
