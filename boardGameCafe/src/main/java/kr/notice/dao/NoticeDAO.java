@@ -8,7 +8,7 @@ import java.util.List;
 
 import kr.notice.vo.NoticeVO;
 import kr.util.DBUtil;
-
+  
 public class NoticeDAO {
 	//╫л╠шео фпео
 	private static NoticeDAO instance = new NoticeDAO();
