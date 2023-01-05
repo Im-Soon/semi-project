@@ -61,9 +61,9 @@ public class CartDAO {
 				//커넥션 풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();			
 				//SQL문 작성
-				sql = "SELECT * FROM zcart c JOIN zitem i ON "
-						+ "c.item_num = i.item_num WHERE c.mem_num = ? "
-						+ "ORDER BY i.item_num ASC";
+				sql = "SELECT * FROM cart c JOIN product i ON "
+						+ "c.pro_num = i.pro_num WHERE c.mem_num = ? "
+						+ "ORDER BY i.pro_num ASC";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
@@ -101,11 +101,11 @@ public class CartDAO {
 			}
 			return list;
 		}
-	//장바구니 상품 등록
-	
-	//장바구니 상품 삭제
-	
-	//장바구니 상품 삭제
+		//장바구니 상품 등록
+		
+		//장바구니 상품 삭제
+		
+		//장바구니 상품 삭제
 	
 	
 }

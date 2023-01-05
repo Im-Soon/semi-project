@@ -10,7 +10,7 @@ public class CartVO {
 	private int order_quantity;
 	private Date reg_date;
 	private int mem_num;
-	private int sub_total;//같은 상품의 총구매 금액 저장
+	private int sub_total;
 	
 	//private ProductVO productVo;
 
