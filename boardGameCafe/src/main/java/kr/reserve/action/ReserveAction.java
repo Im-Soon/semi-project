@@ -1,0 +1,16 @@
+package kr.reserve.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.controller.Action;
+
+public class ReserveAction implements Action{
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		 
+		return "/WEB-INF/views/reserve/reserve.jsp";
+	}
+
+}
