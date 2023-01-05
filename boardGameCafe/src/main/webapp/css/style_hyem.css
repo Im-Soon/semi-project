@@ -1,10 +1,19 @@
 @charset "UTF-8";
 
+@font-face {
+      src: url("../fonts/DungGeunMo.ttf");
+      font-family: "DungGeunMo";
+}
+
 /* 전체 레이아웃 */
+*{
+	font-family: "DungGeunMo";
+}
+
 body{
-	width: 960px;
+	width: 1000px;
 	margin: 0 auto;
-	background: #E6E6E6;
+	background: #9673cd;
 }
 
 a:link{
@@ -26,8 +35,7 @@ a:hover{
 .page-main{
 	background: #FFFFFF;
 	margin: 40px 0;
-	border-radius: 5px;
-	box-shadow: 0 2px 6px rgba(100,100,100,0.3);
+	box-shadow: 10px 10px rgba(73, 73, 73, 1.0);
 	min-height: 650px;
 }
 

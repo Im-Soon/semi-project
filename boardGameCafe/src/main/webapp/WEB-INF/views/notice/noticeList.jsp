@@ -11,7 +11,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>게시판 목록</h2>
+	<h2>공지사항</h2>
 	<div class="align-right">
 		<input type="button" value="글쓰기" onclick="location.href='noticeWriteForm.do'">
 	</div>
@@ -33,7 +33,7 @@
 			<c:forEach var="notice" items="${list}">
 				<tr>
 					<td>${notice.noti_num}</td>
-					<td><a href="detail.do?num=${notice.noti_num}">${notice.noti_title}</a></td>
+					<td><a href="noticeDetail.do?noti_num=${notice.noti_num}">${notice.noti_title}</a></td>
 					<td>${notice.noti_reg_date}</td>
 					<td>${notice.noti_hit}</td>
 				</tr>
