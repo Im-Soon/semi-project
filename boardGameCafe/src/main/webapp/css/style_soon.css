@@ -1,1 +1,62 @@
 @charset "UTF-8";
+/* 전체 레이아웃
+---------------------------------*/
+body{
+	width:960px;
+	height:1500px;
+	margin:0 auto;
+	background:#FFFFFF;
+}
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+a:hover{
+	text-decoration:none;
+	color:#6C6C6C;
+}
+
+/* 주문페이지 form, table  */
+form{
+	width:915px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+	
+}
+form ul li{
+	margin:0 auto;
+	width:520px;
+}
+form ul li label{
+	width:200px;
+	float:left; /* 태그를 왼쪽으로 정렬 */
+}
+ul{
+	list-style:none;
+}
+input{
+	margin-top:4px;
+}
+input[type="text"]{
+	width:310px;
+}
+input[id="zipcode"]{
+	width:205px;
+}
+table{
+	margin:0 auto;
+	width:960px;
+	border:1px solid #000;
+	border-collapse:collapse;
+	margin-top:5px;
+}
+table td,table th{
+	border:1px solid #000;
+	padding:5px;
+}
+

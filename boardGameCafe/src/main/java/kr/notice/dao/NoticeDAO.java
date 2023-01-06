@@ -8,7 +8,7 @@ import java.util.List;
 
 import kr.notice.vo.NoticeVO;
 import kr.util.DBUtil;
-
+  
 public class NoticeDAO {
 	//싱글턴 패턴
 	private static NoticeDAO instance = new NoticeDAO();
@@ -114,12 +114,156 @@ public class NoticeDAO {
 	}
 	
 	//공지 글 상세
+	public NoticeVO getNotice(int noti_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		NoticeVO notice = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "select * from notice where noti_num = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, noti_num);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				notice = new NoticeVO();
+				
+				notice.setNoti_num(rs.getInt("noti_num"));
+				notice.setNoti_title(rs.getString("noti_title"));
+				notice.setNoti_content(rs.getString("noti_content"));
+				notice.setNoti_file(rs.getString("noti_file"));
+				notice.setNoti_hit(rs.getInt("noti_hit"));
+				notice.setNoti_reg_date(rs.getDate("noti_reg_date"));
+			}
+		} catch(Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return notice;
+	}
 	
 	//조회수 증가
+	public void updateReadcount(int noti_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			
+			//SQL문 작성
+			sql = "update notice set noti_hit = noti_hit + 1 where noti_num = ?";
+			
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			
+			//?에 데이터를 바인딩
+			pstmt.setInt(1, noti_num);
+			
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	
 	//파일 삭제
+	public void deleteFile(int noti_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			
+			//SQL문 작성
+			sql = "update notice set noti_file = '' where noti_num = ?";
+			
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			
+			//?에 데이터 바인딩
+			pstmt.setInt(1, noti_num);
+			
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	
 	//공지 글 수정
+	public void updateNotice(NoticeVO notice) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		String sub_sql = "";
+		int cnt = 0;
+		
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			
+			//전송된 파일 여부 체크
+			if(notice.getNoti_file() != null) {
+				sub_sql += ", noti_file = ?";
+			}
+
+			sql = "update notice set noti_title = ?, noti_content = ?" + sub_sql + " where noti_num = ?"; 
+			
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			
+			//?에 데이터 바인딩
+			pstmt.setString(++cnt, notice.getNoti_title());
+			pstmt.setString(++cnt, notice.getNoti_content());
+			if(notice.getNoti_file() != null) {
+				pstmt.setString(++cnt, notice.getNoti_file());
+			}
+			pstmt.setInt(++cnt, notice.getNoti_num());
+			
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}	
 	
 	//공지 글 삭제
+	public void deleteNotice(int noti_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			
+			sql = "delete from notice where noti_num = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noti_num);
+			
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 }
