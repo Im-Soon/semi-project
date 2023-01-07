@@ -12,7 +12,7 @@
 			<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/reserve/reservemain.do">예약</a>
+			<a href="${pageContext.request.contextPath}/reserve/reserveMain.do">예약</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/notice/noticeList.do">공지</a>
