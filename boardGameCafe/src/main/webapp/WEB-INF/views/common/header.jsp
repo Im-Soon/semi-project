@@ -21,7 +21,7 @@
 			<a href="${pageContext.request.contextPath}/inquiry/inquiryList.do">문의</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
+			<a href="${pageContext.request.contextPath}/mymember/myPage.do">마이페이지</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/order/order.do">주문페이지</a>
